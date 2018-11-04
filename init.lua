@@ -1,6 +1,11 @@
 local function extrahb(player, nb_slots)
 	nb_slots = tonumber(nb_slots)
 	
+	if nb_slots == nil then
+		minetest.chat_send_player(player:get_player_name(), "It takes a number between 1 and 23")
+		return
+	end
+	
 	if nb_slots < 1 then
 		nb_slots = 1
 	elseif nb_slots > 23 then
@@ -15,7 +20,7 @@ local function extrahb(player, nb_slots)
 end
 
 minetest.register_on_joinplayer(function(player)
-	local nb_slots = 4
+	local nb_slots = minetest.settings:get("extrahb_initial_number_slots") or 8
 
 	if not player:get_attribute("extrahb") then
 		player:set_attribute("extrahb", nb_slots)
@@ -27,7 +32,7 @@ minetest.register_on_joinplayer(function(player)
 end)
 
 minetest.register_chatcommand("extrahb", {
-	description = "Configure number slot",
+	description = "Configure number between 1 and 23",
 	params = "<slot number>",
 	func = function(name, param)
 		local player = minetest.get_player_by_name(name)

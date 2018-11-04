@@ -1,0 +1,2 @@
+# Default 8 slots, adjustable beetween 1 and 23.   
+extrahb_initial_number_slots (Initial number Slot) int 8
