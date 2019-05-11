@@ -8,8 +8,8 @@ local function extrahb(player, nb_slots)
 	
 	if nb_slots < 1 then
 		nb_slots = 1
-	elseif nb_slots > 23 then
-		nb_slots = 23
+	elseif nb_slots > 32 then
+		nb_slots = 32
 	end
 
 	player:hud_set_hotbar_itemcount(nb_slots)
